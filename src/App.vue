@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-5">
-    <vue-p5 @setup="setup"> </vue-p5>
+    <input type="number" name v-model="height" id />
+    <vue-p5 @setup="setup"></vue-p5>
   </div>
 </template>
 <script>
@@ -8,12 +9,18 @@ import VueP5 from "vue-p5";
 
 export default {
   name: "App",
+  data: function() {
+    return {
+      height: null
+    };
+  },
   methods: {
     setup(sketch) {
-      sketch.createCanvas(900, 900);
+      sketch.createCanvas(parseInt(900), 900);
       sketch.background("green");
     }
   },
+  updated: function() {},
   components: {
     "vue-p5": VueP5
   }
